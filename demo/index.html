@@ -56,23 +56,69 @@
       }
 
       /* === Demo Styles === */
-
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        background: #d8d8d8;
+      }
       .container {
         text-align: center;
-        padding: 50px 0;
+        padding: 65px 0;
       }
       .menu {
+        border-radius:5px;
+        overflow: hidden;
         border: 1px solid #888;
         display: inline-block;
+        background: #fff;
       }
       .menu_item {
-        padding: 20px;
-        border: 1px solid #ddd;
+        border: 1px solid #888;
         cursor: default;
         text-align: left;
+        line-height: 70px;
+        min-height: 70px;
+        min-width: 300px;
+        text-indent: 20px;
+        position: relative;
+        overflow: hidden;
+      }
+      .menu_item.selected {
+        background: #FFFFE0;
+      }
+      .menu_item .menu {
+        float: left;
+        border-bottom:none;
+      }
+      .menu_item .menu,
+      .menu_item .menu .menu_item {
+        border-width: 1px 0;
+        border-radius: 0;
+        font-style: italic;
+      }
+      .menu_item .menu .menu_item {
+        text-indent: 45px;
+        color: #666;
+      }
+      .menu_item .menu .menu_item:before {
+        content: ' ';
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 10px;
+        background: #ddd;
       }
       h2 {
+        pointer-events:none;
         font-weight: bold;
+      }
+      .drop_preview {
+        width: 100%;
+        height: 10px;
+        background: #aaa;
       }
 
     </style>
@@ -81,7 +127,7 @@
   <body>
 
     <div class='container'>
-      <div class='menu'>
+      <div class='top_level_menu menu'>
 
         <div class='menu_item'>
           <h2>Menu Item #1</h2>
@@ -94,7 +140,7 @@
         <div class='menu_item'>
           <h2>Menu Item #3</h2>
 
-          <div class='menu'>
+          <div class='nested_menu menu'>
             <div class='menu_item'>
               <h2>Nested Menu Item #1</h2>
             </div>
@@ -108,14 +154,34 @@
 
         </div>
 
+        <div class='menu_item'>
+          <h2>Menu Item #4</h2>
+        </div>
+
+        <div class='menu_item'>
+          <h2>Menu Item #5</h2>
+          <div class='nested_menu menu'>
+            <div class='menu_item'>
+              <h2>Nested Menu Item #1</h2>
+            </div>
+            <div class='menu_item'>
+              <h2>Nested Menu Item #2</h2>
+            </div>
+            <div class='menu_item'>
+              <h2>Nested Menu Item #3</h2>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div> <!-- /.container -->
 
     <script>
       $(function() {
 
-        $('.menu').dragsort({
-          sortSelector: '.menu_item'
+        $('.top_level_menu').dragsort({
+          sortSelector: '.menu_item',
+          nestedMenuSelector: '.menu'
         });
 
       });
