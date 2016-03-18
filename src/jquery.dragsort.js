@@ -26,22 +26,14 @@
 
 
 
-
-  // - Meta clicks on parents select or deselect the whole children, depending whether all children are already selected...
-  // - How do I get my nesting only going to the depth I want?
+  // - See shift select bugs
   // - remove nested list from preview
   // - I need filters for locked and unlocked too...could want to have filters for lots of things...
 
-  // - Refactor and comment...
   // - do really fast drags work?
   // - indexes API...make sure this can account for dragging something things that come from children and some things that come from parents at the same time...ie meta clicking something in a child and something in parents
-  // - After I fix that it's time to get my indexes API working, and rework this
-  // - back into Vectr w/ the modified API
-  // - I'm gonna need list a nesting rule...a callback that defines the nesting rule...some things can nest deep
-  //   and others can't
-
-
-
+  // - Hook Vectr up w/ the modified API
+  // - I'm gonna have to tell the plugin how deeply to nest different things...
 
 
 
